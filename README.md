@@ -34,7 +34,7 @@ browser will refresh while you code.
 * Angular JS 1.3
 * Bootstrap Stylus 3.2
 
-## Prepping Code For Depoloying
+## Preparing Code For Deployment
 
 ```bash
 gulp production
