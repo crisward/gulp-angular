@@ -72,8 +72,23 @@ the main.styl file. I typically name the main coffeescript file and main stylus 
 
 ```
 
+## Error Handling
+
+Errors are handled with gulp-notify - ie it pops them up in a mac notification
+This means you don't have to keep one eye on your terminal.
+
+If you fix the error and save, compilation will continue on save.
 
 
+## Customising
+
+Settings for the location of source and build files are at the top of the gulp file.
+A function named 'addTransforms' can be added to modify which browserify transforms
+are used.
+
+A full list of transforms are available here
+
+https://github.com/substack/node-browserify/wiki/list-of-transforms
 
 
 
