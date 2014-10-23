@@ -27,8 +27,8 @@ browser will refresh while you code.
 * Coffeescript for js
 * Jade for templates
 * Debowerify to allow you to 'require' bower modules
-
-
+* Watchify for quick continuous js rebuilding
+ 
 ### Included Libs
 
 * Angular JS 1.3
