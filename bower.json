@@ -1,0 +1,19 @@
+{
+  "name": "gulpwatch",
+  "version": "0.0.0",
+  "authors": [
+    "Cris Ward"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.0",
+    "bootstrap-stylus": "~3.2.0"
+  }
+}
