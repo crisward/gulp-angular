@@ -14,7 +14,11 @@ bower install
 npm install
 gulp
 ```
+This will install everything needed. 
+The gulp command starts watching your files for changes.
 
+Open the index html in your browser. Install the chrome live reload widget and your 
+browser will refresh while you code.
 
 ## What does it include
 
@@ -22,6 +26,7 @@ gulp
 * Stylus for css
 * Coffeescript for js
 * Jade for templates
+* Debowerify to allow you to 'require' bower modules
 
 
 ### Included Libs
