@@ -18,7 +18,15 @@ gulp
 
 ## What does it include
 
-* Compilation for
-  * Stylus for css
-  * Coffeescript for js
-  * Jade for templates
+### Compilation for
+* Stylus for css
+* Coffeescript for js
+* Jade for templates
+
+
+### Included Libs
+
+* Angular JS 1.3
+* Bootstrap Stylus 3.2
+
+
