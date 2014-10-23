@@ -1,5 +1,5 @@
 {
-  "name": "watchify-recipie",
+  "name": "gulp-angular",
   "version": "0.0.0",
   "description": "",
   "main": "gulpfile.js",
