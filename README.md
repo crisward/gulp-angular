@@ -49,7 +49,7 @@ The structure I tend to follow is a source and build folder.
 The build folder has one js file and one css file.
 The source folder has a main.coffee file which boots the app and loads the modules.
 
-I generally put one module per folder. Including the templates (in jade), and and coffee script file.
+I generally put one module per folder. Including the templates (in jade), and one coffee script file.
 Any css specific to the module is put into a .styl file within the module folder and is imported into
 the main.styl file. I typically name the main coffeescript file and main stylus file the same as the folder.
 
