@@ -5,7 +5,7 @@ This is bare skeleton of how I setup my Angular Apps.
 Thought I'd put it here for future reference.
 
 
-## How to use
+## How to use for development
 
 ```bash
 git clone git@github.com:crisward/gulp-angular.git
@@ -28,10 +28,17 @@ browser will refresh while you code.
 * Jade for templates
 * Debowerify to allow you to 'require' bower modules
 * Watchify for quick continuous js rebuilding
- 
+
 ### Included Libs
 
 * Angular JS 1.3
 * Bootstrap Stylus 3.2
 
+## Prepping Code For Depoloying
+
+```bash
+gulp production
+```
+This does the same as `gulp` without the watch and adds uglify compression on your js
+and compresses your css in both cases removing comments, console.logs and line spaces.
 
