@@ -1,8 +1,8 @@
 require 'angular'
-require './test/test.coffee'
+require './mydirective/mydirective.coffee'
 
 angular.module 'app',[
-  'test'
+  'mydirective'
   ]
 
 angular.bootstrap document, ['app']
