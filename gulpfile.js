@@ -17,6 +17,7 @@ var jadeify = require('jadeify');
 var livereload = require('gulp-livereload');
 var stylus = require('gulp-stylus');
 var nib = require('nib');
+var notify = require("gulp-notify");
 
 //production modules
 var ngAnnotate = require('gulp-ng-annotate');
@@ -32,7 +33,7 @@ gulp.task('watchjs',function(){
 
   function rebundle() {
     return bundler.bundle()
-      .on('error', gutil.log.bind(gutil, 'Browserify Error'))// log errors if they happen
+      .on('error', errorHandler)//gutil.log.bind(gutil, 'Browserify Error'))// log errors if they happen
       .pipe(source(destjs))
       .pipe(gulp.dest(outputfolder))
       .pipe(livereload());
@@ -47,11 +48,20 @@ function addTransforms(bundler){
   return bundler;
 }
 
+function errorHandler() {
+  var args = Array.prototype.slice.call(arguments);
+  notify.onError({
+    title: "Compile Error",
+    message: "<%= error.message %>"
+  }).apply(this, args);
+  this.emit('end');
+}
+
 gulp.task('watchcss',function(){
   function cssbundle(){
     gulp.src(srccss)
       .pipe(stylus({use: nib(),'include css':true}))
-      .on('error', gutil.log.bind(gutil, 'Stylus Error'))
+      .on('error',errorHandler)// gutil.log.bind(gutil, 'Stylus Error'))
       .pipe(gulp.dest(outputfolder))
       .pipe(livereload());
   }
@@ -63,7 +73,7 @@ gulp.task('prodjs',function(){
   var bundler = addTransforms(browserify(srcjs));
   bundler.transform('stripify');
   bundler.bundle()
-    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+    .on('error', errorHandler)
     .pipe(source(destjs))
     .pipe(streamify(ngAnnotate()))
     .pipe(streamify(uglify()))
