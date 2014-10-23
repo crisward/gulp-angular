@@ -83,7 +83,7 @@ If you fix the error and save, compilation will continue on save.
 ## Customising
 
 Settings for the location of source and build files are at the top of the gulp file.
-A function named 'addTransforms' can be added to modify which browserify transforms
+A function named 'addTransforms' can be modified to customise which browserify transforms
 are used.
 
 A full list of transforms are available here
