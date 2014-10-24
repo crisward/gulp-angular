@@ -27,7 +27,7 @@ var minifyCSS = require('gulp-minify-css');
 var streamify = require('gulp-streamify');
 
 gulp.task('watchjs',function(){
-  var bundler = watchify(browserify(srcjs, watchify.args));
+  var bundler = watchify(browserify(srcjs,{cache:{},packageCache:{},fullPaths:true,debug:true}));
   bundler = addTransforms(bundler);
   bundler.on('update', rebundle);
 
