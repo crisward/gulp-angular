@@ -1,9 +1,18 @@
 //settings
-var srcjs = './src/main.coffee';
-var destjs = 'main.js';
+var srcjs = ['./src/main.coffee','./src/**/*.test.coffee'];
+var destjs =['main.js','tests.js'];
 var srccss = './src/main.styl';
 var allcss = ['./src/**/*.styl','./src/**/*.css']
 var outputfolder = './build';
+var karmaCommonConf = {
+    browsers: ['PhantomJS'],
+    frameworks: ['jasmine'],
+    autoWatchBatchDelay:1000,
+    files: [
+      outputfolder+'/tests.js',
+      {pattern: outputfolder+'/'+destjs, watched: true, included: false, served: false}
+    ]
+  };
 
 //watch modules
 var gulp = require('gulp');
@@ -18,6 +27,7 @@ var livereload = require('gulp-livereload');
 var stylus = require('gulp-stylus');
 var nib = require('nib');
 var notify = require("gulp-notify");
+var glob = require('glob');
 
 //production modules
 var ngAnnotate = require('gulp-ng-annotate');
@@ -26,19 +36,26 @@ var stripify = require('stripify');
 var minifyCSS = require('gulp-minify-css');
 var streamify = require('gulp-streamify');
 
-gulp.task('watchjs',function(){
-  var bundler = watchify(browserify(srcjs,{cache:{},packageCache:{},fullPaths:true,debug:true}));
-  bundler = addTransforms(bundler);
-  bundler.on('update', rebundle);
+//test modules
+var karma = require('karma').server;
 
-  function rebundle() {
-    return bundler.bundle()
-      .on('error', errorHandler)//gutil.log.bind(gutil, 'Browserify Error'))// log errors if they happen
-      .pipe(source(destjs))
-      .pipe(gulp.dest(outputfolder))
-      .pipe(livereload());
-  }
-  return rebundle();
+
+gulp.task('watchjs',function(){
+  srcjs.forEach(function(src,key){
+    var files = glob.sync(src);//use this so multiple sources can be passed
+    var bundler = watchify(browserify(files,{cache:{},packageCache:{},fullPaths:true,debug:true}));
+    bundler = addTransforms(bundler);
+    bundler.on('update', rebundle);
+
+    function rebundle() {
+      return bundler.bundle()
+        .on('error', errorHandler)//gutil.log.bind(gutil, 'Browserify Error'))// log errors if they happen
+        .pipe(source(destjs[key]))
+        .pipe(gulp.dest(outputfolder))
+        .pipe(livereload());
+    }
+    return rebundle();
+  });
 });
 
 function addTransforms(bundler){
@@ -88,8 +105,12 @@ gulp.task('prodcss',function(){
     .pipe(gulp.dest(outputfolder))
 });
 
+gulp.task('test', function (done) {
+  karma.start(karmaCommonConf, done);
+});
 
-gulp.task('default',['watchjs','watchcss']);
+
+gulp.task('default',['watchjs','watchcss','test']);
 gulp.task('production',['prodjs','prodcss']);
 
 
