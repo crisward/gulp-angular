@@ -8,7 +8,7 @@ Thought I'd put it here for future reference.
 ## How to use for development
 
 ```bash
-git clone git@github.com:crisward/gulp-angular.git
+git clone https://github.com/crisward/gulp-angular.git
 cd gulp-angular
 bower install
 npm install
