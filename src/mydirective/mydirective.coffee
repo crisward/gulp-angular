@@ -12,6 +12,7 @@ angular.module 'mydirective',[]
     items:myitems
     add:-> @items.push({title:"new"})
     remove:(index)-> @items.splice(index,1)
+    reset:-> @items.length = 0
 
 .factory 'myitems',->
   [{title:"one"}

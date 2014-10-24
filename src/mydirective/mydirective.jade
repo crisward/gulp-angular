@@ -10,5 +10,6 @@
         input.form-control(ng-model="item.title")
       .col.xs-2
         .btn.btn-warning(ng-click="md.remove($index)") &times;
-
-    .btn.btn-primary(ng-click="md.add()") Add New
+    .btn-toolbar
+      .btn.btn-primary(ng-click="md.add()") Add New
+      .btn.btn-danger(ng-click="md.reset()") Delete All

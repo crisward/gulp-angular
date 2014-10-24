@@ -31,4 +31,10 @@ describe "mydirective",->
       expect(t.controller.items[1].title).toEqual("two")
       t.controller.remove(1)
       expect(t.controller.items[1].title).toEqual("three")
+
+    it "pressing reset should clear the list",->
+      t.controller.add()
+      expect(t.controller.items.length).toBe(2)
+      t.controller.reset()
+      expect(t.controller.items.length).toBe(0)
   

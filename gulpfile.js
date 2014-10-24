@@ -7,11 +7,12 @@ var outputfolder = './build';
 var karmaCommonConf = {
     browsers: ['PhantomJS'],
     frameworks: ['jasmine'],
-    autoWatchBatchDelay:1000,
+    autoWatchBatchDelay:100,
     files: [
       outputfolder+'/tests.js',
       {pattern: outputfolder+'/'+destjs, watched: true, included: false, served: false}
-    ]
+    ],
+    reporters: ['progress', 'notify']
   };
 
 //watch modules

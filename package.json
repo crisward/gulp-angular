@@ -29,7 +29,8 @@
     "gulp-notify": "~2.0.0",
     "karma": "~0.12.24",
     "karma-phantomjs-launcher": "~0.1.4",
-    "karma-jasmine": "~0.1.5"
+    "karma-jasmine": "~0.1.5",
+    "karma-notify-reporter": "~0.1.1"
   },
   "dependencies": {
     "install": "~0.1.7",
