@@ -65,10 +65,12 @@ the main.styl file. I typically name the main coffeescript file and main stylus 
 |     |- module1.coffee
 |     |- module1.jade
 |     |- module1.styl
+|     |- module1.test.coffee
 |  |- module2
 |     |- module2.coffee
 |     |- module2.jade
 |     |- module2.styl
+|     |- module2.test.coffee
 
 ```
 
@@ -79,6 +81,11 @@ This means you don't have to keep one eye on your terminal.
 
 If you fix the error and save, compilation will continue on save.
 
+## Testing
+
+I've added karma testing to the gulp task so jasmine tests can be run 
+while you write your code. I've set it up with phantomjs so you don't have to have
+Chrome popping up a window
 
 ## Customising
 
