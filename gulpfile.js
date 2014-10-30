@@ -70,7 +70,7 @@ function errorHandler() {
   var args = Array.prototype.slice.call(arguments);
   notify.onError({
     title: "Compile Error",
-    message: "<%= error.message %>"
+    message: "<%= error %>"
   }).apply(this, args);
   this.emit('end');
 }
