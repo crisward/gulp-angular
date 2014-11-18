@@ -88,14 +88,17 @@ gulp.task('watchcss',function(){
 });
 
 gulp.task('prodjs',function(){
-  var bundler = addTransforms(browserify(srcjs));
-  bundler.transform('stripify');
-  bundler.bundle()
-    .on('error', errorHandler)
-    .pipe(source(destjs))
-    .pipe(streamify(ngAnnotate()))
-    .pipe(streamify(uglify()))
-    .pipe(gulp.dest(outputfolder))
+  srcjs.forEach(function(src,key){
+    var files = glob.sync(src);//use this so multiple sources can be passed
+    var bundler = addTransforms(browserify(files));
+    bundler.transform('stripify');
+    bundler.bundle()
+      .on('error', errorHandler)
+      .pipe(source(destjs[key]))
+      .pipe(streamify(ngAnnotate()))
+      .pipe(streamify(uglify({mangle:false})))
+      .pipe(gulp.dest(outputfolder))
+    });
 });
 
 gulp.task('prodcss',function(){
